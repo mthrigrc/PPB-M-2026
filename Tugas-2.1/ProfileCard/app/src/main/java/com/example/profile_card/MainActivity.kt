@@ -21,9 +21,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +49,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ProfileCard(modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(24.dp)
+        modifier = modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
     ) {
         Image(
             painter = painterResource(R.drawable.profile_picture),
@@ -54,15 +62,16 @@ fun ProfileCard(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .size(120.dp)
                 .clip(CircleShape)
-                .align(Alignment.CenterHorizontally)
-
         )
         Text(
             text = "PROFIL MAHASISWA",
             fontSize = 22.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 16.dp)
+
         )
         Column(
+            modifier = Modifier.fillMaxWidth(),
 
         )
         {
@@ -84,11 +93,44 @@ fun ProfileCard(modifier: Modifier = Modifier) {
                     Text("Rekayasa Perangkat Lunak", fontSize = 18.sp)
                 }
             }
+            Row(modifier = Modifier.padding(top = 16.dp)){
+                Column{
+                    Text("Email", fontWeight = FontWeight.Medium)
+                    Text("matahari.sinaga@gmail.com", fontSize = 18.sp)
+                }
+            }
+            Row(modifier = Modifier.padding(top = 16.dp)){
+                Column{
+                    Text("Angkatan", fontWeight = FontWeight.Medium)
+                    Text("25", fontSize = 18.sp)
+                }
+            }
         }
+
+        HorizontalDivider(
+            modifier = Modifier.padding(vertical = 16.dp),
+            thickness = 1.dp
+        )
+
         Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Mahasiswa",
+                fontSize = 14.sp
+            )
 
-        ){
+            VerticalDivider(
+                modifier = Modifier.height(24.dp),
+                thickness = 1.dp
+            )
 
+            Text(
+                text = "Semester 3",
+                fontSize = 14.sp
+            )
         }
     }
 }
