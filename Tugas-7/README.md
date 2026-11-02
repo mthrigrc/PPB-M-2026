@@ -1,12 +1,8 @@
 # Login App — Kotlin, Jetpack Compose, MVVM & Room
 
-A small Android login demo based on the supplied case-study references.
-
 ## Demo account
 - Username: `admin`
 - Password: `12345`
-
-The app creates this demo user in the local Room database the first time it runs.
 
 ## Open in Android Studio
 1. Extract `LoginMVVMRoom.zip`.
@@ -44,6 +40,3 @@ app/src/main/java/com/example/loginapp/
 4. Repository calls `UserDao.login()`.
 5. Room queries the `users` table in SQLite.
 6. ViewModel publishes success or error state; Compose redraws automatically.
-
-## Important security note
-This is a learning exercise matching the assignment's sample data. The demo stores `12345` as plaintext so the Room table is easy to inspect. **Do not use plaintext passwords in a real application.** Production authentication should use a secure backend and salted password hashing; client-side Room data is not a secure authentication system.
